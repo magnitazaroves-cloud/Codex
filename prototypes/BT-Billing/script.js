@@ -1,6 +1,5 @@
 /**
  * BT-Billing - Детализация заработной платы
- * ТвойМагнит приложение
  */
 
 const userData = {
@@ -75,26 +74,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const formattedDate = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth() + 1).padStart(2, '0')}.${today.getFullYear()}`;
     document.getElementById('generatedDate').textContent = formattedDate;
 
-    // Установка месяца
+    // Месяцы
     const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
         'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
     ];
-    const monthDisplay = `${months[today.getMonth()]} ${today.getFullYear()}`;
 
     // Выбор пользователя
     const userSelect = document.getElementById('userType');
     userSelect.addEventListener('change', function() {
-        updateData(this.value);
+        updateData(this.value, months);
     });
 
     // Табы
-    const tabBtns = document.querySelectorAll('.tab-item');
+    const tabBtns = document.querySelectorAll('.tab-button');
     tabBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const tabName = this.dataset.tab;
+            
             // Удаление active со всех
-            document.querySelectorAll('.tab-item').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            
             // Добавление active
             this.classList.add('active');
             document.getElementById(tabName).classList.add('active');
@@ -102,10 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Первая загрузка
-    updateData('rp');
+    updateData('rp', months);
 });
 
-function updateData(userType) {
+function updateData(userType, months) {
     const data = userData[userType];
     const bonuses = bonusesData[userType];
 
@@ -116,9 +116,6 @@ function updateData(userType) {
 
     // Месяц
     const today = new Date();
-    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-        'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
-    ];
     document.getElementById('employeeMonth').textContent = `${months[today.getMonth()]} ${today.getFullYear()}`;
 
     // Зарплата
@@ -128,10 +125,10 @@ function updateData(userType) {
     document.getElementById('totalSalary').textContent = formatCurrency(totalSalary);
 
     // Премии таблица
-    let tableHTML = ``;
+    let tableHTML = '';
     bonuses.forEach(bonus => {
         const statusText = bonus.status === 'success' ? '✓ Выплачена' : '⚠ Не выплачена';
-        const amountText = bonus.amount >= 0 ? `${formatCurrencyShort(bonus.amount)}` : `${formatCurrencyShort(bonus.amount)}`;
+        const amountText = formatCurrency(bonus.amount);
         tableHTML += `
             <tr>
                 <td>${bonus.name}</td>
@@ -149,12 +146,5 @@ function formatCurrency(value) {
         style: 'currency',
         currency: 'RUB',
         minimumFractionDigits: 0
-    }).format(value).replace('₽', '₽').trim();
-}
-
-function formatCurrencyShort(value) {
-    const sign = value >= 0 ? '' : '−';
-    return sign + new Intl.NumberFormat('ru-RU', {
-        minimumFractionDigits: 0
-    }).format(Math.abs(value)) + ' ₽';
+    }).format(value).trim();
 }
