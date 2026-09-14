@@ -1,3 +1,8 @@
+/**
+ * BT-Billing - Детализация заработной платы
+ * Использует дизайн-систему ТвойМагнит
+ */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,242 +10,409 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--color-gray-100);
     min-height: 100vh;
-    padding: 20px;
-    color: #333;
+    padding: 0;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+/* ==================== */
+/* Контейнер приложения */
+/* ==================== */
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--color-white);
+    position: relative;
 }
 
-/* Header */
-.header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 30px 40px;
+/* ==================== */
+/* Заголовок приложения */
+/* ==================== */
+
+.app-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #764ba2 100%);
+    color: var(--color-white);
+    padding: var(--spacing-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+}
+
+.app-header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.app-header__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    flex: 1;
+}
+
+.app-header__subtitle {
+    font-size: var(--font-size-sm);
+    opacity: 0.95;
     text-align: center;
 }
 
-.logo {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    opacity: 0.9;
+.btn-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--color-white);
+    font-size: var(--font-size-lg);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.header h1 {
-    font-size: 32px;
-    font-weight: 600;
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
 }
 
-/* Main content */
+/* ==================== */
+/* Основной контент    */
+/* ==================== */
+
 .main-content {
-    padding: 40px;
+    flex: 1;
+    padding: var(--spacing-md);
+    overflow-y: auto;
 }
 
-/* User selector */
+/* ==================== */
+/* Селектор пользователя */
+/* ==================== */
+
 .user-selector {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: #f5f5f5;
-    border-radius: 8px;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
 }
 
-.user-selector label {
+.label {
     display: block;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #555;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-gray-900);
+    font-size: var(--font-size-sm);
 }
 
 .user-selector select {
     width: 100%;
-    max-width: 400px;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
     cursor: pointer;
-    transition: border-color 0.3s ease;
+    transition: all var(--transition);
+    font-family: var(--font-family);
 }
 
 .user-selector select:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
 }
 
-/* Employee info */
+/* ==================== */
+/* Информация сотрудника */
+/* ==================== */
+
 .employee-info {
-    margin-bottom: 40px;
+    margin-bottom: var(--spacing-lg);
 }
 
-.employee-info h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 10px;
+.section-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-gray-900);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-primary);
 }
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
 }
 
 .info-item {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 6px;
-    border-left: 4px solid #667eea;
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-sm);
 }
 
 .info-item label {
-    font-size: 12px;
-    font-weight: 600;
-    color: #999;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-500);
     text-transform: uppercase;
-    margin-bottom: 5px;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 0.5px;
 }
 
 .info-item span {
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-gray-900);
 }
 
-/* Salary summary */
+/* ==================== */
+/* Итоговая зарплата    */
+/* ==================== */
+
 .salary-summary {
-    margin-bottom: 40px;
-}
-
-.salary-summary h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 10px;
+    margin-bottom: var(--spacing-lg);
 }
 
 .salary-card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
 }
 
 .salary-card {
-    padding: 25px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-    border-radius: 8px;
-    border: 2px solid #e0e0e0;
+    padding: var(--spacing-lg);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+    border: 2px solid var(--color-gray-200);
 }
 
 .salary-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
 }
 
 .salary-card.accent {
-    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-    border-color: #f39c12;
+    background: linear-gradient(135deg, rgba(151, 71, 255, 0.05) 0%, rgba(151, 71, 255, 0.1) 100%);
+    border-color: var(--color-primary);
 }
 
 .salary-card.total {
-    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-    border-color: #2980b9;
     grid-column: 1 / -1;
-}
-
-.salary-card.total .salary-label {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.salary-card.total .salary-amount {
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #764ba2 100%);
+    border: none;
+    color: var(--color-white);
 }
 
 .salary-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 12px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-500);
     text-transform: uppercase;
+    margin-bottom: var(--spacing-sm);
     letter-spacing: 0.5px;
 }
 
+.salary-card.total .salary-label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
 .salary-amount {
-    font-size: 32px;
-    font-weight: 700;
-    color: #333;
-    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    font-family: var(--font-family-mono);
 }
 
-/* Details section */
+.salary-card.total .salary-amount {
+    color: var(--color-white);
+    font-size: var(--font-size-3xl);
+}
+
+/* ==================== */
+/* Таблицы              */
+/* ==================== */
+
 .details-section {
-    margin-bottom: 40px;
+    margin-bottom: var(--spacing-lg);
 }
 
-.details-section h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #667eea;
-    padding-bottom: 10px;
-}
-
-/* Tabs */
 .tabs {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
     flex-wrap: wrap;
+    border-bottom: 2px solid var(--color-gray-200);
+    overflow-x: auto;
 }
 
 .tab-btn {
-    padding: 12px 24px;
-    border: 2px solid #ddd;
-    background: white;
-    color: #666;
-    border-radius: 6px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    background: transparent;
+    color: var(--color-gray-500);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
     cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.3s ease;
+    transition: all var(--transition);
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
 }
 
 .tab-btn:hover {
-    border-color: #667eea;
-    color: #667eea;
+    color: var(--color-primary);
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: #667eea;
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
 }
 
-/* Tab content */
 .tab-content {
     display: none;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn var(--transition);
 }
 
 .tab-content.active {
     display: block;
 }
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.details-table thead {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #764ba2 100%);
+    color: var(--color-white);
+}
+
+.details-table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+}
+
+.details-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-gray-200);
+    font-size: var(--font-size-sm);
+}
+
+.details-table tbody tr:hover {
+    background: var(--color-gray-50);
+}
+
+.details-table tr.total-row {
+    background: var(--color-gray-100);
+    font-weight: var(--font-weight-semibold);
+}
+
+.details-table tr.total-row td {
+    border-top: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+}
+
+.amount {
+    font-family: var(--font-family-mono);
+    color: var(--color-gray-900);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* ==================== */
+/* Бейджи               */
+/* ==================== */
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    background: var(--color-gray-200);
+    color: var(--color-gray-900);
+}
+
+.badge.success {
+    background: #D4EDDA;
+    color: #155724;
+}
+
+.badge.warning {
+    background: #FFF3CD;
+    color: #856404;
+}
+
+/* ==================== */
+/* Дополнительная инфо  */
+/* ==================== */
+
+.additional-info {
+    padding: var(--spacing-lg);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.additional-info h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-900);
+}
+
+/* ==================== */
+/* Footer информация    */
+/* ==================== */
+
+.footer-info {
+    padding: var(--spacing-lg);
+    background: var(--color-gray-100);
+    border-top: 1px solid var(--color-gray-200);
+    text-align: center;
+    color: var(--color-gray-500);
+    font-size: var(--font-size-xs);
+}
+
+.footer-info p {
+    margin: var(--spacing-xs) 0;
+}
+
+/* ==================== */
+/* Анимации             */
+/* ==================== */
 
 @keyframes fadeIn {
     from {
@@ -253,148 +425,25 @@ body {
     }
 }
 
-/* Tables */
-.details-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+/* ==================== */
+/* Responsive           */
+/* ==================== */
 
-.details-table thead {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.details-table th {
-    padding: 15px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.details-table td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    font-size: 14px;
-}
-
-.details-table tbody tr:hover {
-    background: #f9f9f9;
-}
-
-.details-table tr.total-row {
-    background: #f0f0f0;
-    font-weight: 600;
-}
-
-.details-table tr.total-row td {
-    border-bottom: 2px solid #667eea;
-    border-top: 2px solid #667eea;
-}
-
-.amount {
-    font-family: 'Monaco', 'Courier New', monospace;
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-/* Badges */
-.badge {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    background: #e0e0e0;
-    color: #666;
-}
-
-.badge.success {
-    background: #d4edda;
-    color: #155724;
-}
-
-.badge.warning {
-    background: #fff3cd;
-    color: #856404;
-}
-
-/* Achievement indicators */
-.achievement {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'Monaco', 'Courier New', monospace;
-}
-
-.achievement.high {
-    background: #d4edda;
-    color: #155724;
-}
-
-.achievement.low {
-    background: #fff3cd;
-    color: #856404;
-}
-
-/* Additional info */
-.additional-info {
-    margin-bottom: 30px;
-    padding: 25px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    border-left: 4px solid #667eea;
-}
-
-.additional-info h3 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.legend {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: #666;
-}
-
-/* Footer info */
-.footer-info {
-    padding: 20px;
-    background: #f5f5f5;
-    border-top: 1px solid #e0e0e0;
-    text-align: center;
-    color: #666;
-}
-
-.footer-info p {
-    margin: 5px 0;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .main-content {
-        padding: 20px;
+        padding: var(--spacing-sm);
     }
 
-    .header {
-        padding: 20px;
+    .app-header {
+        padding: var(--spacing-sm);
     }
 
-    .header h1 {
-        font-size: 24px;
+    .app-header__title {
+        font-size: var(--font-size-lg);
+    }
+
+    .salary-card-container {
+        grid-template-columns: 1fr;
     }
 
     .salary-card.total {
@@ -411,56 +460,95 @@ body {
 
     .tab-btn {
         width: 100%;
+        text-align: left;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
+
+    .tab-btn.active {
+        border-left-color: var(--color-primary);
+        border-bottom: none;
     }
 
     .details-table {
-        font-size: 12px;
+        font-size: var(--font-size-xs);
     }
 
     .details-table th,
     .details-table td {
-        padding: 10px;
-    }
-
-    .salary-amount {
-        font-size: 24px;
-    }
-
-    .salary-label {
-        font-size: 12px;
+        padding: var(--spacing-sm);
     }
 
     .legend {
         grid-template-columns: 1fr;
     }
+
+    .salary-amount {
+        font-size: var(--font-size-xl);
+    }
+
+    .salary-card.total .salary-amount {
+        font-size: var(--font-size-2xl);
+    }
 }
 
 @media (max-width: 480px) {
-    .container {
-        border-radius: 0;
+    .app-header__top {
+        gap: var(--spacing-md);
     }
 
-    .header {
-        padding: 15px;
+    .btn-icon {
+        width: 36px;
+        height: 36px;
+        font-size: var(--font-size-base);
     }
 
-    .header h1 {
-        font-size: 20px;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    .main-content {
-        padding: 15px;
-    }
-
-    .salary-card-container {
-        grid-template-columns: 1fr;
+    .salary-card {
+        padding: var(--spacing-md);
     }
 
     .details-table {
         font-size: 11px;
     }
+
+    .details-table th,
+    .details-table td {
+        padding: 6px;
+    }
+
+    .info-item {
+        padding: var(--spacing-sm);
+    }
+
+    .salary-label {
+        font-size: 10px;
+    }
+
+    .salary-amount {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* ==================== */
+/* Achievement indicators */
+/* ==================== */
+
+.achievement {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-family-mono);
+}
+
+.achievement.high {
+    background: #D4EDDA;
+    color: #155724;
+}
+
+.achievement.low {
+    background: #FFF3CD;
+    color: #856404;
 }

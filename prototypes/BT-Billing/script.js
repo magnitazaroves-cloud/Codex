@@ -1,3 +1,8 @@
+/**
+ * BT-Billing - Детализация заработной платы
+ * Логика приложения ТвойМагнит
+ */
+
 // Данные различных категорий пользователей
 const userData = {
     rp: {
@@ -46,13 +51,13 @@ const userData = {
 document.addEventListener('DOMContentLoaded', function() {
     // Установка текущей даты
     const today = new Date();
-    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-        'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
-    ];
     const formattedDate = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth() + 1).padStart(2, '0')}.${today.getFullYear()}`;
     document.getElementById('generatedDate').textContent = formattedDate;
 
     // Установка месяца в текущий
+    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+        'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+    ];
     const currentMonth = months[today.getMonth()];
     const currentYear = today.getFullYear();
     const monthDisplay = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
@@ -97,6 +102,8 @@ function updateEmployeeData(userType) {
 // Функция для обновления зарплаты
 function updateSalaryData(baseSalary, variableSalary) {
     const totalSalary = baseSalary + variableSalary;
+    const ndfl = Math.round(totalSalary * 0.13);
+    const toHand = totalSalary - ndfl;
 
     document.getElementById('baseSalary').textContent = formatCurrency(baseSalary);
     document.getElementById('variableSalary').textContent = formatCurrency(variableSalary);

@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Детализация заработной платы - ТвойМагнит</title>
+    <link rel="stylesheet" href="../../design-system/design-system.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">ТвойМагнит</div>
-            <h1>Детализация заработной платы</h1>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="app-header__top">
+                <button class="btn-icon" aria-label="Назад">
+                    <span>←</span>
+                </button>
+                <h1 class="app-header__title">ТвойМагнит</h1>
+                <button class="btn-icon" aria-label="Меню">
+                    <span>☰</span>
+                </button>
+            </div>
+            <p class="app-header__subtitle">Детализация зарплаты</p>
         </header>
 
         <div class="main-content">
             <!-- Выбор пользователя -->
-            <div class="user-selector">
-                <label for="userType">Тип пользователя:</label>
+            <div class="user-selector card">
+                <label for="userType" class="label">Тип пользователя:</label>
                 <select id="userType">
                     <option value="rp">Рядовой персонал (РП)</option>
                     <option value="ap">Административный персонал (АП)</option>
@@ -28,7 +37,7 @@
 
             <!-- Информация о сотруднике -->
             <div class="employee-info">
-                <h2>Информация о сотруднике</h2>
+                <h2 class="section-title">Информация о сотруднике</h2>
                 <div class="info-grid">
                     <div class="info-item">
                         <label>Имя:</label>
@@ -51,7 +60,7 @@
 
             <!-- Итоговая заработная плата -->
             <div class="salary-summary">
-                <h2>Итоговая заработная плата</h2>
+                <h2 class="section-title">Итоговая заработная плата</h2>
                 <div class="salary-card-container">
                     <div class="salary-card">
                         <div class="salary-label">Оклад</div>
@@ -70,7 +79,7 @@
 
             <!-- Детализация показателей -->
             <div class="details-section">
-                <h2>Детализация показателей</h2>
+                <h2 class="section-title">Детализация показателей</h2>
                 
                 <div class="tabs">
                     <button class="tab-btn active" data-tab="bonuses">Премии и бонусы</button>
@@ -198,7 +207,7 @@
 
             <!-- Дополнительная информация -->
             <div class="additional-info">
-                <h3>Легенда показателей</h3>
+                <h3 class="section-title">Легенда показателей</h3>
                 <div class="legend">
                     <div class="legend-item">
                         <span class="badge success">Рассчитана</span> — Премия учтена в расчете
