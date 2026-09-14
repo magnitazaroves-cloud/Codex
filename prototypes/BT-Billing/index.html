@@ -3,233 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Детализация заработной платы - ТвойМагнит</title>
+    <title>Детализация зарплаты - ТвойМагнит</title>
     <link rel="stylesheet" href="../../design-system/design-system.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <div class="app-header__top">
-                <button class="btn-icon" aria-label="Назад">
-                    <span>←</span>
-                </button>
-                <h1 class="app-header__title">ТвойМагнит</h1>
-                <button class="btn-icon" aria-label="Меню">
-                    <span>☰</span>
-                </button>
-            </div>
-            <p class="app-header__subtitle">Детализация зарплаты</p>
-        </header>
-
-        <div class="main-content">
-            <!-- Выбор пользователя -->
-            <div class="user-selector card">
-                <label for="userType" class="label">Тип пользователя:</label>
-                <select id="userType">
-                    <option value="rp">Рядовой персонал (РП)</option>
-                    <option value="ap">Административный персонал (АП)</option>
-                    <option value="dm">Директор магазина (ДМ)</option>
-                    <option value="dg">Директор группы (ДГ)</option>
-                    <option value="hr">HR регионов</option>
-                </select>
+    <div class="app">
+        <!-- Боковая навигация -->
+        <aside class="sidebar">
+            <div class="sidebar__header">
+                <div class="logo">🎁</div>
             </div>
 
-            <!-- Информация о сотруднике -->
-            <div class="employee-info">
-                <h2 class="section-title">Информация о сотруднике</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <label>Имя:</label>
-                        <span id="employeeName">Иван Петров</span>
-                    </div>
-                    <div class="info-item">
-                        <label>Должность:</label>
-                        <span id="employeePosition">Продавец</span>
-                    </div>
-                    <div class="info-item">
-                        <label>Магазин:</label>
-                        <span id="employeeStore">Магазин №42 (г. Москва)</span>
-                    </div>
-                    <div class="info-item">
-                        <label>Месяц:</label>
-                        <span id="employeeMonth">Сентябрь 2026</span>
+            <nav class="sidebar__nav">
+                <a href="#" class="nav-item active" data-section="salary">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-label">Зарплата</span>
+                </a>
+                <a href="#" class="nav-item" data-section="achievements">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Достижения</span>
+                </a>
+                <a href="#" class="nav-item" data-section="profile">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-label">Профиль</span>
+                </a>
+            </nav>
+
+            <div class="sidebar__footer">
+                <div class="user-mini">
+                    <div class="avatar-small">АЭС</div>
+                    <div class="user-info-small">
+                        <div class="user-name-small">Эдуард</div>
+                        <div class="user-role-small">Разработчик</div>
                     </div>
                 </div>
             </div>
+        </aside>
 
-            <!-- Итоговая заработная плата -->
-            <div class="salary-summary">
-                <h2 class="section-title">Итоговая заработная плата</h2>
-                <div class="salary-card-container">
-                    <div class="salary-card">
-                        <div class="salary-label">Оклад</div>
-                        <div class="salary-amount" id="baseSalary">45 000 ₽</div>
+        <!-- Основной контент -->
+        <main class="main">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="header__title">ТвойМагнит</h1>
+                <p class="header__subtitle">Детализация заработной платы</p>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Выбор пользователя -->
+                <div class="selector-card">
+                    <label for="userType" class="selector-label">Сотрудник:</label>
+                    <select id="userType" class="selector-input">
+                        <option value="rp">Иван Петров - Продавец</option>
+                        <option value="ap">Ольга Сидорова - Товаровед</option>
+                        <option value="dm">Сергей Иванов - Директор</option>
+                        <option value="dg">Андрей Смирнов - Директор группы</option>
+                        <option value="hr">Мария Козлова - HR директор</option>
+                    </select>
+                </div>
+
+                <!-- Профиль сотрудника -->
+                <section class="profile-section">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">АЭС</div>
+                            <div class="profile-info">
+                                <h2 id="employeeName" class="profile-name">Иван Петров</h2>
+                                <p id="employeePosition" class="profile-position">Продавец</p>
+                                <p id="employeeStore" class="profile-store">Магазин №42</p>
+                                <p id="employeeMonth" class="profile-month">Сентябрь 2026</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="salary-card accent">
-                        <div class="salary-label">Переменная часть</div>
-                        <div class="salary-amount" id="variableSalary">12 500 ₽</div>
+                </section>
+
+                <!-- Итоговая зарплата -->
+                <section class="salary-section">
+                    <h3 class="section-title">Ваша заработная плата</h3>
+                    <div class="salary-grid">
+                        <div class="salary-item">
+                            <div class="salary-label">Оклад</div>
+                            <div class="salary-value" id="baseSalary">45 000 ₽</div>
+                        </div>
+                        <div class="salary-item primary">
+                            <div class="salary-label">Премии</div>
+                            <div class="salary-value" id="variableSalary">12 500 ₽</div>
+                        </div>
                     </div>
-                    <div class="salary-card total">
-                        <div class="salary-label">Итого к выплате</div>
-                        <div class="salary-amount" id="totalSalary">57 500 ₽</div>
+                    <div class="salary-total">
+                        <div class="total-label">Итого к выплате</div>
+                        <div class="total-value" id="totalSalary">57 500 ₽</div>
                     </div>
+                </section>
+
+                <!-- Детализация -->
+                <section class="details-section">
+                    <h3 class="section-title">Детализация</h3>
+
+                    <div class="tabs">
+                        <button class="tab-item active" data-tab="bonuses">
+                            <span class="tab-icon">🎁</span>
+                            Премии
+                        </button>
+                        <button class="tab-item" data-tab="metrics">
+                            <span class="tab-icon">📊</span>
+                            Показатели
+                        </button>
+                        <button class="tab-item" data-tab="deductions">
+                            <span class="tab-icon">📋</span>
+                            Удержания
+                        </button>
+                    </div>
+
+                    <!-- Премии -->
+                    <div id="bonuses" class="tab-content active">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Вид премии</th>
+                                        <th>%</th>
+                                        <th>Сумма</th>
+                                        <th>Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bonusesTable">
+                                    <tr>
+                                        <td>Базовая премия</td>
+                                        <td>20%</td>
+                                        <td>9 000 ₽</td>
+                                        <td><span class="badge success">✓ Выплачена</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Показатели -->
+                    <div id="metrics" class="tab-content">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Показатель</th>
+                                        <th>План</th>
+                                        <th>Факт</th>
+                                        <th>Результат</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Объем продаж</td>
+                                        <td>2 500 000 ₽</td>
+                                        <td>2 750 000 ₽</td>
+                                        <td><span class="badge success">110%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Выполнение РТО</td>
+                                        <td>95%</td>
+                                        <td>92%</td>
+                                        <td><span class="badge warning">97%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NPS магазина</td>
+                                        <td>&gt;70</td>
+                                        <td>68</td>
+                                        <td><span class="badge warning">⚠ Требует улучшения</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Удержания -->
+                    <div id="deductions" class="tab-content">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Вид удержания</th>
+                                        <th>Сумма</th>
+                                        <th>Категория</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>НДФЛ (13%)</td>
+                                        <td>7 475 ₽</td>
+                                        <td><span class="badge">Налоговое</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Страховые взносы</td>
+                                        <td>За счет компании</td>
+                                        <td><span class="badge">ФСС</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="net-info">
+                            <div class="net-label">На руки после удержаний:</div>
+                            <div class="net-value">50 025 ₽</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Помощь -->
+                <section class="help-section">
+                    <div class="help-card">
+                        <div class="help-icon">❓</div>
+                        <div class="help-content">
+                            <h4 class="help-title">Остались вопросы?</h4>
+                            <p class="help-text">Обратитесь к директору магазина или в отдел управления персоналом</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Дата -->
+                <div class="footer-meta">
+                    <small>Данные на <strong id="generatedDate">14.09.2026</strong></small>
                 </div>
             </div>
-
-            <!-- Детализация показателей -->
-            <div class="details-section">
-                <h2 class="section-title">Детализация показателей</h2>
-                
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="bonuses">Премии и бонусы</button>
-                    <button class="tab-btn" data-tab="metrics">Показатели магазина</button>
-                    <button class="tab-btn" data-tab="deductions">Удержания</button>
-                </div>
-
-                <!-- Вкладка: Премии и бонусы -->
-                <div id="bonuses" class="tab-content active">
-                    <table class="details-table">
-                        <thead>
-                            <tr>
-                                <th>Наименование</th>
-                                <th>Процент</th>
-                                <th>Сумма (₽)</th>
-                                <th>Статус</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Базовая премия</td>
-                                <td>20%</td>
-                                <td class="amount">9 000 ₽</td>
-                                <td><span class="badge success">Рассчитана</span></td>
-                            </tr>
-                            <tr>
-                                <td>Премия за выполнение плана продаж</td>
-                                <td>10%</td>
-                                <td class="amount">4 500 ₽</td>
-                                <td><span class="badge success">Рассчитана</span></td>
-                            </tr>
-                            <tr>
-                                <td>Премия за NPS</td>
-                                <td>5%</td>
-                                <td class="amount">-1 000 ₽</td>
-                                <td><span class="badge warning">Не выполнено</span></td>
-                            </tr>
-                            <tr class="total-row">
-                                <td colspan="2"><strong>Итого переменная часть:</strong></td>
-                                <td class="amount"><strong>12 500 ₽</strong></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Вкладка: Показатели магазина -->
-                <div id="metrics" class="tab-content">
-                    <table class="details-table">
-                        <thead>
-                            <tr>
-                                <th>Показатель</th>
-                                <th>План</th>
-                                <th>Факт</th>
-                                <th>% Достижения</th>
-                                <th>Примечание</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Объем продаж магазина</td>
-                                <td>2 500 000 ₽</td>
-                                <td>2 750 000 ₽</td>
-                                <td><span class="achievement high">110%</span></td>
-                                <td>План перевыполнен</td>
-                            </tr>
-                            <tr>
-                                <td>Выполнение РТО</td>
-                                <td>95%</td>
-                                <td>92%</td>
-                                <td><span class="achievement low">97%</span></td>
-                                <td>Ниже плана на 3%</td>
-                            </tr>
-                            <tr>
-                                <td>Потери магазина</td>
-                                <td>&lt;2%</td>
-                                <td>1.8%</td>
-                                <td><span class="achievement high">✓</span></td>
-                                <td>В норме</td>
-                            </tr>
-                            <tr>
-                                <td>NPS магазина</td>
-                                <td>&gt;70</td>
-                                <td>68</td>
-                                <td><span class="achievement low">✗</span></td>
-                                <td>Требует улучшения</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Вкладка: Удержания -->
-                <div id="deductions" class="tab-content">
-                    <table class="details-table">
-                        <thead>
-                            <tr>
-                                <th>Вид удержания</th>
-                                <th>Сумма (₽)</th>
-                                <th>Причина</th>
-                                <th>Статус</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>НДФЛ (13%)</td>
-                                <td class="amount">7 475 ₽</td>
-                                <td>Налоговое удержание</td>
-                                <td><span class="badge">Обязательное</span></td>
-                            </tr>
-                            <tr>
-                                <td>Социальный страховой взнос</td>
-                                <td class="amount">Работодатель</td>
-                                <td>Перечисляется в ФСС</td>
-                                <td><span class="badge">За счет компании</span></td>
-                            </tr>
-                            <tr class="total-row">
-                                <td colspan="2"><strong>Итого на руки:</strong></td>
-                                <td><strong>50 025 ₽</strong></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Дополнительная информация -->
-            <div class="additional-info">
-                <h3 class="section-title">Легенда показателей</h3>
-                <div class="legend">
-                    <div class="legend-item">
-                        <span class="badge success">Рассчитана</span> — Премия учтена в расчете
-                    </div>
-                    <div class="legend-item">
-                        <span class="badge warning">Не выполнено</span> — Условие премии не выполнено
-                    </div>
-                    <div class="legend-item">
-                        <span class="achievement high">110%</span> — План перевыполнен
-                    </div>
-                    <div class="legend-item">
-                        <span class="achievement low">97%</span> — План не достигнут
-                    </div>
-                </div>
-            </div>
-
-            <!-- Дата формирования и действия -->
-            <div class="footer-info">
-                <p><small>Данные сформированы на: <strong id="generatedDate">14.09.2026</strong></small></p>
-                <p><small>При возникновении вопросов обратитесь к директору магазина или в отдел управления персоналом</small></p>
-            </div>
-        </div>
+        </main>
     </div>
 
     <script src="script.js"></script>
